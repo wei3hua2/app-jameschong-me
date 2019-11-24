@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    </head>
+    <body>
+        <h3>Vis paper</h3>
+        <table id="table_vis" class="display" data-page-length='50'>
+            <tfoot></tfoot>
+        </table>
+
+        <script>
+            $(document).ready( function () {
+                $.getJSON("./data/ieee_vis_papers.json", function (json) {
+                    console.log(json[1])
+                    $('#table_vis').DataTable( {
+                        data: json,
+                        columns: [
+                            { title: 'Year', data: 'Year'},
+                            { title: 'Type', data: 'PaperType'},
+                            { title:'Title', data: 'Title' },
+                            { title:'Abstract', data: 'Abstract'}
+                            // { title:'Cited', data: 'XPloreCitationCount_02-2019'},
+                            // { title:'CitedAminer', data:'AminerCitationCount_02-2019'}
+                        ],
+                        initComplete: function () {
+                        }
+                    });
+                });
+            });
+            
+        </script>
+    </body>
+</html>

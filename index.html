@@ -1,6 +1,60 @@
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+        
+        <script type="text/javascript" src="./data/msar.js"></script>
+        <script type="text/javascript" src="./data/era2010.js"></script>
+        <script type="text/javascript" src="./data/quali2012.js"></script>
+    </head>
     <body>
-        <h1>hello world</h1>
+        <h3>MSAR</h3>
+        <table id="table_msar" class="display"></table>
+        <br/><br/>
+        <h3>ERA</h3>
+        <table id="table_era" class="display"></table>
+        <br/><br/>
+        <h3>QUAli</h3>
+        <table id="table_quali" class="display"></table>
+        
+
+        <script>
+            $(document).ready( function () {
+                console.log(era[1])
+                console.log(msar[1])
+                console.log(quali[1])
+                
+                $('#table_era').DataTable( {
+                    data: era,
+                    columns: [
+                        { title:'Abbrv', data: 'abbrv' },
+                        { title:'Name', data: 'name' },
+                        { title:'Rank', data: 'rank' }
+                    ]
+                } );
+
+                $('#table_quali').DataTable( {
+                    data: quali,
+                    columns: [
+                        { title:'Abbrv', data: 'abbrv' },
+                        { title:'Name', data: 'name' },
+                        { title:'Rank', data: 'rank' }
+                    ]
+                } );
+
+                $('#table_msar').DataTable( {
+                    data: msar,
+                    columns: [
+                        { title:'Abbrv', data: 'abbrv' },
+                        { title:'Category', data: 'category' },
+                        { title:'Name', data: 'name' },
+                        { title:'H', data: 'H' },
+                        { title:'Citations', data: 'citations' }
+                    ]
+                } );
+            } );
+        </script>
     </body>
 </html>
